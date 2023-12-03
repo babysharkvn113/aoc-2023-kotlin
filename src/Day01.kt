@@ -1,18 +1,10 @@
 fun main() {
-
-//    fun part2(input: List<String>): Int {
-//        return input.size
-//    }
-
-    // test if implementation meets criteria from the description, like:
-    val input1 = readInput("data/day01");
-    val d = Data(input1);
-
-    println(d.solvePart1());
-    println(d.solvePart2());
+    val d = Data01(readInput("data/day01"))
+    println(d.solvePart1())
+    println(d.solvePart2())
 }
 
-class Data (private val input:List<String>){
+class Data01 (private val input:List<String>){
     private val words:Map<String,Int> = mapOf(
         "one" to 1,
         "two" to 2,
@@ -24,9 +16,6 @@ class Data (private val input:List<String>){
         "eight" to 8,
         "nine" to 9,
     )
-    fun part1(input: List<String>): Int {
-        return input.size
-    }
     fun solvePart1():Int = input.sumOf { sumRowPart1(it) }
     private fun sumRowPart1(row: String) : Int = "${row.first{it.isDigit()}}${row.last{it.isDigit()}}".toInt()
 
@@ -49,8 +38,4 @@ class Data (private val input:List<String>){
             substring(startingAt, (startingAt + len).coerceAtMost(length))
         }
     }
-
-
-
-
 }
